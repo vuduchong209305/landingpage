@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LexViet - Tư vấn pháp luật</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Sans không được public chính thức trên Google Fonts
+         Sử dụng font gần tương đương -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- OwlCarousel -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    >
+
+    <!-- Tabler Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    >
+
+    <style>
+        :root {
+            --primary: #044283;
+            --primary-dark: #022d5b;
+            --primary-light: #0a5da8;
+            --text: #1d2b3a;
+            --gray: #667085;
+            --light: #f7f9fc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Google Sans", "Inter", sans-serif;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           COMMON
+        ========================= */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .btn-primary-custom {
+            background: #1769b6;
+            border: 1px solid #1769b6;
+            color: #fff;
+            padding: 13px 28px;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: .3s;
+        }
+
+        .btn-primary-custom:hover {
+            background: #0c5496;
+            border-color: #0c5496;
+            color: #fff;
+        }
+
+        .btn-outline-custom {
+            border: 1px solid rgba(255,255,255,.6);
+            color: #fff;
+            padding: 13px 28px;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: .3s;
+        }
+
+        .btn-outline-custom:hover {
+            background: #fff;
+            color: var(--primary);
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(4, 66, 131, 0.95);
+            transition: all 0.3s ease;
+        }
+
+        .site-header.sticky-active {
+            background: #044283;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar {
+            min-height: 72px;
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+            font-size: 25px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-brand small {
+            display: block;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            font-size: 42px;
+        }
+
+        .navbar-nav {
+            gap: 5px;
+        }
+
+        .navbar .nav-link {
+            color: rgba(255,255,255,.8);
+            font-size: 14px;
+            padding: 10px 16px !important;
+            position: relative;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: #fff;
+        }
+
+        .navbar .nav-link.active::after {
+            content: "";
+            position: absolute;
+            height: 2px;
+            background: #fff;
+            left: 16px;
+            right: 16px;
+            bottom: 3px;
+        }
+
+        .btn-header {
+            background: #fff;
+            color: var(--primary);
+            border-radius: 4px;
+            padding: 11px 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .navbar-toggler {
+            border-color: rgba(255,255,255,.5);
+        }
+
+        .navbar-toggler-icon {
+            filter: brightness(0) invert(1);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero-slider {
+            position: relative;
+        }
+
+        .hero-item {
+            height: 640px;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-item::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2, 35, 70, .98) 0%,
+                    rgba(2, 35, 70, .9) 35%,
+                    rgba(2, 35, 70, .25) 75%,
+                    rgba(2, 35, 70, .1) 100%
+                );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 650px;
+            padding-top: 0;
+        }
+
+        .hero-title {
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.2;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .hero-title strong {
+            font-weight: 800;
+            display: block;
+        }
+
+        .hero-description {
+            max-width: 500px;
+            color: rgba(255,255,255,.85);
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .hero-slider .owl-nav button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55px;
+            height: 55px;
+            border: 1px solid rgba(255,255,255,.35) !important;
+            border-radius: 0 !important;
+            color: #fff !important;
+            font-size: 40px !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slider .owl-prev {
+            left: 0;
+        }
+
+        .hero-slider .owl-next {
+            right: 0;
+        }
+
+        .hero-slider .owl-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+        }
+
+        .hero-slider .owl-dot span {
+            background: transparent !important;
+            border: 1px solid #fff;
+        }
+
+        .hero-slider .owl-dot.active span {
+            background: #fff !important;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-section {
+            background: #fff;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .experience-box {
+            position: absolute;
+            left: -25px;
+            bottom: -25px;
+            background: var(--primary);
+            color: #fff;
+            padding: 22px 28px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-radius: 4px;
+            min-width: 180px;
+        }
+
+        .experience-box i {
+            font-size: 45px;
+        }
+
+        .experience-box strong {
+            display: block;
+            font-size: 34px;
+            line-height: 1;
+        }
+
+        .experience-box span {
+            font-size: 12px;
+        }
+
+        .about-description {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #f3f7fb;
+            color: var(--primary);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .feature-item h5 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .feature-item p {
+            color: var(--gray);
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+
+
+        /* =========================
+           TIMELINE
+        ========================= */
+
+        .timeline-section {
+            background:
+                linear-gradient(
+                    180deg,
+                    #f5f8fc 0%,
+                    #ffffff 100%
+                );
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 60px;
+            left: 8%;
+            right: 8%;
+            height: 2px;
+            background: #9bb4ce;
+        }
+
+        .timeline-item {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .timeline-icon {
+            width: 72px;
+            height: 72px;
+            margin: auto;
+            border: 1px solid #7f9cbc;
+            background: #f8fbff;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-year {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .timeline-item h5 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .timeline-item p {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.7;
+            max-width: 190px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .service-section {
+            background: #fff;
+        }
+
+        .service-card {
+            border: 1px solid #e5eaf0;
+            padding: 35px 28px;
+            height: 100%;
+            transition: .3s;
+            background: #fff;
+            border-radius: 6px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 40px rgba(4,66,131,.12);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            background: #f1f6fb;
+            border-radius: 50%;
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h4 {
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .service-card a {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           CONSULTATION
+        ========================= */
+
+        .consultation-section {
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2, 35, 70, .98),
+                    rgba(4, 66, 131, .96)
+                ),
+                url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .consultation-title {
+            font-size: 38px;
+            line-height: 1.35;
+            font-weight: 700;
+        }
+
+        .consultation-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0 0;
+        }
+
+        .consultation-list li {
+            margin-bottom: 16px;
+            color: rgba(255,255,255,.85);
+        }
+
+        .consultation-list i {
+            margin-right: 10px;
+            color: #fff;
+        }
+
+        .consultation-form .form-control,
+        .consultation-form .form-select {
+            border: 0;
+            min-height: 52px;
+            border-radius: 4px;
+            padding: 12px 16px;
+        }
+
+        .consultation-form textarea {
+            min-height: 120px !important;
+        }
+
+        .consultation-form label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .btn-submit {
+            background: #1769b6;
+            border: 0;
+            color: #fff;
+            width: 100%;
+            padding: 15px;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+
+        .btn-submit:hover {
+            background: #0a5497;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .site-footer {
+            background: #04366d;
+            color: rgba(255,255,255,.8);
+            padding: 70px 0 25px;
+        }
+
+        .footer-logo {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo i {
+            font-size: 45px;
+        }
+
+        .footer-text {
+            max-width: 260px;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .footer-title {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,.75);
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .footer-contact li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.2);
+            margin-top: 50px;
+            padding-top: 25px;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           BACK TO TOP
+        ========================= */
+
+        .back-to-top {
+            position: fixed;
+            width: 48px;
+            height: 48px;
+            right: 25px;
+            bottom: 25px;
+            border-radius: 50%;
+            background: #1769b6;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+
+
+        /* =========================
+           FLOATING CONTACT
+        ========================= */
+
+        .floating-contact {
+            position: fixed;
+            right: 25px;
+            bottom: 90px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .floating-contact__item {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+            transition: transform .25s ease, box-shadow .25s ease;
+            text-decoration: none;
+        }
+
+        .floating-contact__item:hover {
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .25);
+        }
+
+        .floating-contact__phone {
+            background: #18a957;
+        }
+
+        .floating-contact__phone i {
+            font-size: 27px;
+        }
+
+        .floating-contact__zalo {
+            background: #0068ff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: -.3px;
+        }
+
+        .floating-contact__item {
+            position: relative;
+        }
+
+        .floating-contact__item::after {
+            content: attr(data-label);
+            position: absolute;
+            right: calc(100% + 12px);
+            top: 50%;
+            transform: translateY(-50%) translateX(8px);
+            white-space: nowrap;
+            background: #1f2937;
+            color: #fff;
+            padding: 7px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: .2s ease;
+        }
+
+        .floating-contact__item:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 991px) {
+
+            .site-header {
+                background: var(--primary);
+            }
+
+            .navbar-collapse {
+                background: var(--primary);
+                padding: 20px;
+                margin-top: 10px;
+            }
+
+            .navbar .nav-link.active::after {
+                display: none;
+            }
+
+            .hero-item {
+                height: 600px;
+            }
+
+            .hero-title {
+                font-size: 44px;
+            }
+
+            .about-image {
+                margin-bottom: 60px;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+
+            .timeline-item {
+                margin-bottom: 50px;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .hero-item {
+                height: 620px;
+            }
+
+            .hero-item::before {
+                background: rgba(2, 35, 70, .85);
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .hero-slider .owl-nav {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .about-image img {
+                height: 320px;
+            }
+
+            .experience-box {
+                left: 10px;
+                bottom: -30px;
+            }
+
+            .consultation-title {
+                font-size: 30px;
+            }
+
+            .consultation-info {
+                margin-bottom: 40px;
+            }
+
+            .footer-column {
+                margin-bottom: 35px;
+            }
+
+            .footer-bottom {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+
+
+            .floating-contact {
+                right: 15px;
+                bottom: 78px;
+                gap: 10px;
+            }
+
+            .floating-contact__item {
+                width: 48px;
+                height: 48px;
+            }
+
+            .hero-title {
+                font-size: 31px;
+            }
+
+            .hero-content .d-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-content .btn {
+                width: 100%;
+            }
+
+            .experience-box {
+                transform: scale(.85);
+                transform-origin: left bottom;
+            }
+        }
+
+        :root {
+            --header-height: 72px;
+        }
+
+        section,
+        footer {
+            scroll-margin-top: var(--header-height);
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="site-header">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+                <i class="ti ti-shield-check logo-icon"></i>
+
+                <span>
+                    LEXVIET
+                    <small>TƯ VẤN PHÁP LUẬT</small>
+                </span>
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Trang chủ</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gioi-thieu">Giới thiệu</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lich-su">Lĩnh vực hoạt động</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dich-vu">Dịch vụ</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Tin tức</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lien-he">Liên hệ</a>
+                    </li>
+                </ul>
+
+                <a href="#tu-van" class="btn btn-header">
+                    <i class="ti ti-phone me-1"></i>
+                    TƯ VẤN NGAY
+                </a>
+
+            </div>
+
+        </div>
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero-slider owl-carousel" id="home">
+
+    <div
+        class="hero-item"
+        style="background-image: url('https://images.unsplash.com/photo-1589578527966-fdac0f44566c?auto=format&fit=crop&w=1920&q=85')"
+    >
+
+        <div class="container">
+            <div class="hero-content">
+
+                <h1 class="hero-title">
+                    ĐỒNG HÀNH PHÁP LÝ
+                    <strong>VỮNG BƯỚC THÀNH CÔNG</strong>
+                </h1>
+
+                <p class="hero-description">
+                    Cung cấp giải pháp pháp lý toàn diện, hiệu quả
+                    và bảo vệ quyền lợi hợp pháp của bạn.
+                </p>
+
+                <div class="d-flex gap-3">
+                    <a href="#tu-van" class="btn btn-primary-custom">
+                        TƯ VẤN MIỄN PHÍ
+                    </a>
+
+                    <a href="#gioi-thieu" class="btn btn-outline-custom">
+                        TÌM HIỂU THÊM
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div
+        class="hero-item"
+        style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1920&q=85')"
+    >
+
+        <div class="container">
+            <div class="hero-content">
+
+                <h1 class="hero-title">
+                    GIẢI PHÁP PHÁP LÝ
+                    <strong>UY TÍN & CHUYÊN NGHIỆP</strong>
+                </h1>
+
+                <p class="hero-description">
+                    Đồng hành cùng cá nhân và doanh nghiệp
+                    trong mọi vấn đề pháp lý.
+                </p>
+
+                <a href="#tu-van" class="btn btn-primary-custom">
+                    NHẬN TƯ VẤN NGAY
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="section about-section" id="gioi-thieu">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-5">
+
+                <div class="about-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=900&q=80"
+                        alt="Đội ngũ luật sư"
+                    >
+
+                    <div class="experience-box">
+
+                        <i class="ti ti-shield-check"></i>
+
+                        <div>
+                            <strong>10+</strong>
+                            <span>Năm kinh nghiệm</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-7">
+
+                <div class="section-label">
+                    VỀ CHÚNG TÔI
+                </div>
+
+                <h2 class="section-title mb-4">
+                    Công ty tư vấn pháp luật<br>
+                    uy tín tại Việt Nam
+                </h2>
+
+                <p class="about-description mb-5">
+                    Với đội ngũ luật sư giàu kinh nghiệm và chuyên môn cao,
+                    chúng tôi cam kết mang đến cho khách hàng những giải pháp
+                    pháp lý tối ưu, hiệu quả và tiết kiệm thời gian, chi phí.
+                </p>
+
+                <div class="row g-4">
+
+                    <div class="col-6 col-md-3">
+                        <div class="feature-item">
+
+                            <div class="feature-icon">
+                                <i class="ti ti-users"></i>
+                            </div>
+
+                            <h5>Chuyên nghiệp</h5>
+
+                            <p>
+                                Đội ngũ luật sư
+                                chuyên môn cao
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-md-3">
+                        <div class="feature-item">
+
+                            <div class="feature-icon">
+                                <i class="ti ti-user-heart"></i>
+                            </div>
+
+                            <h5>Tận tâm</h5>
+
+                            <p>
+                                Luôn bảo vệ quyền
+                                lợi khách hàng
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-md-3">
+                        <div class="feature-item">
+
+                            <div class="feature-icon">
+                                <i class="ti ti-award"></i>
+                            </div>
+
+                            <h5>Hiệu quả</h5>
+
+                            <p>
+                                Giải pháp tối ưu,
+                                hiệu quả nhất
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-md-3">
+                        <div class="feature-item">
+
+                            <div class="feature-icon">
+                                <i class="ti ti-shield-lock"></i>
+                            </div>
+
+                            <h5>Bảo mật</h5>
+
+                            <p>
+                                Thông tin khách hàng
+                                luôn được bảo mật
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TIMELINE ================= -->
+
+<section class="section timeline-section" id="lich-su">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <div class="section-label">
+                LỊCH SỬ HOẠT ĐỘNG
+            </div>
+
+            <h2 class="section-title">
+                Hành trình xây dựng và phát triển
+            </h2>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="row g-4">
+
+                <div class="col-md">
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-icon">
+                            <i class="ti ti-building-bank"></i>
+                        </div>
+
+                        <div class="timeline-year">2014</div>
+
+                        <h5>Thành lập công ty</h5>
+
+                        <p>
+                            LexViet được thành lập với sứ mệnh
+                            mang đến giải pháp pháp lý chuyên nghiệp.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md">
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-icon">
+                            <i class="ti ti-users"></i>
+                        </div>
+
+                        <div class="timeline-year">2016</div>
+
+                        <h5>Mở rộng đội ngũ</h5>
+
+                        <p>
+                            Mở rộng quy mô, thu hút nhiều luật sư
+                            giỏi và chuyên gia pháp lý.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md">
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-icon">
+                            <i class="ti ti-trophy"></i>
+                        </div>
+
+                        <div class="timeline-year">2018</div>
+
+                        <h5>Khẳng định uy tín</h5>
+
+                        <p>
+                            Được hàng ngàn khách hàng tin tưởng
+                            và đánh giá cao.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md">
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-icon">
+                            <i class="ti ti-briefcase"></i>
+                        </div>
+
+                        <div class="timeline-year">2021</div>
+
+                        <h5>Đa dạng dịch vụ</h5>
+
+                        <p>
+                            Phát triển đa dạng các lĩnh vực
+                            tư vấn pháp lý.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md">
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-icon">
+                            <i class="ti ti-target"></i>
+                        </div>
+
+                        <div class="timeline-year">2024</div>
+
+                        <h5>Hướng tới tương lai</h5>
+
+                        <p>
+                            Không ngừng đổi mới và nâng cao
+                            chất lượng dịch vụ.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section class="section service-section" id="dich-vu">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <div class="section-label">
+                DỊCH VỤ CUNG CẤP
+            </div>
+
+            <h2 class="section-title">
+                Lĩnh vực tư vấn pháp lý
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="ti ti-home"></i>
+                    </div>
+
+                    <h4>Luật đất đai</h4>
+
+                    <p>
+                        Tư vấn các vấn đề liên quan đến quyền sử dụng đất,
+                        tranh chấp đất đai, chuyển nhượng và thủ tục pháp lý.
+                    </p>
+
+                    <a href="#">
+                        Tìm hiểu thêm
+                        <i class="ti ti-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="ti ti-users-group"></i>
+                    </div>
+
+                    <h4>Luật thừa kế</h4>
+
+                    <p>
+                        Tư vấn lập di chúc, phân chia di sản thừa kế,
+                        khai nhận và thực hiện các thủ tục pháp lý.
+                    </p>
+
+                    <a href="#">
+                        Tìm hiểu thêm
+                        <i class="ti ti-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="ti ti-scale"></i>
+                    </div>
+
+                    <h4>Luật dân sự</h4>
+
+                    <p>
+                        Tư vấn các vấn đề hợp đồng, bồi thường thiệt hại,
+                        tranh chấp dân sự và quyền lợi cá nhân.
+                    </p>
+
+                    <a href="#">
+                        Tìm hiểu thêm
+                        <i class="ti ti-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONSULTATION ================= -->
+
+<section class="section consultation-section" id="tu-van">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-5 consultation-info">
+
+                <div class="section-label text-white">
+                    ĐĂNG KÝ TƯ VẤN
+                </div>
+
+                <h2 class="consultation-title">
+                    Nhận tư vấn pháp lý<br>
+                    miễn phí ngay hôm nay!
+                </h2>
+
+                <ul class="consultation-list">
+
+                    <li>
+                        <i class="ti ti-circle-check"></i>
+                        Tư vấn nhanh chóng, chính xác
+                    </li>
+
+                    <li>
+                        <i class="ti ti-circle-check"></i>
+                        Bảo mật thông tin tuyệt đối
+                    </li>
+
+                    <li>
+                        <i class="ti ti-circle-check"></i>
+                        Hoàn toàn miễn phí
+                    </li>
+
+                    <li>
+                        <i class="ti ti-circle-check"></i>
+                        Giải pháp pháp lý tối ưu
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-lg-7">
+
+                <form class="consultation-form" id="consultationForm">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <label for="name">
+                                Họ và tên của bạn *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                class="form-control"
+                                placeholder="Nhập họ và tên"
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label for="phone">
+                                Số điện thoại *
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                class="form-control"
+                                placeholder="Nhập số điện thoại"
+                            >
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <label for="law">
+                                Chọn luật tư vấn *
+                            </label>
+
+                            <select
+                                id="law"
+                                name="law"
+                                class="form-select"
+                            >
+
+                                <option value="">
+                                    -- Chọn lĩnh vực tư vấn --
+                                </option>
+
+                                <option value="Luật đất đai">
+                                    Luật đất đai
+                                </option>
+
+                                <option value="Luật thừa kế">
+                                    Luật thừa kế
+                                </option>
+
+                                <option value="Luật dân sự">
+                                    Luật dân sự
+                                </option>
+
+                                <option value="Luật doanh nghiệp">
+                                    Luật doanh nghiệp
+                                </option>
+
+                                <option value="Khác">
+                                    Khác
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <label for="content">
+                                Nội dung tư vấn *
+                            </label>
+
+                            <textarea
+                                id="content"
+                                name="content"
+                                class="form-control"
+                                placeholder="Nhập nội dung tư vấn của bạn"
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <button
+                                type="submit"
+                                class="btn-submit"
+                                id="btnSubmit"
+                            >
+                                GỬI YÊU CẦU TƯ VẤN
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="site-footer" id="lien-he">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6 col-lg-4 footer-column">
+
+                <div class="footer-logo">
+
+                    <i class="ti ti-shield-check"></i>
+
+                    <div>
+                        LEXVIET
+                        <small class="d-block fs-6 fw-normal">
+                            TƯ VẤN PHÁP LUẬT
+                        </small>
+                    </div>
+
+                </div>
+
+                <p class="footer-text">
+                    LexViet cam kết mang đến giải pháp pháp lý toàn diện,
+                    uy tín và hiệu quả cho khách hàng.
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#">
+                        <i class="ti ti-brand-facebook"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="ti ti-brand-linkedin"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="ti ti-brand-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2 footer-column">
+
+                <h5 class="footer-title">
+                    LIÊN KẾT NHANH
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                    <li><a href="#lich-su">Lĩnh vực hoạt động</a></li>
+                    <li><a href="#dich-vu">Dịch vụ</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="#lien-he">Liên hệ</a></li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2 footer-column">
+
+                <h5 class="footer-title">
+                    DỊCH VỤ
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li><a href="#">Luật đất đai</a></li>
+                    <li><a href="#">Luật thừa kế</a></li>
+                    <li><a href="#">Luật dân sự</a></li>
+                    <li><a href="#">Luật hôn nhân gia đình</a></li>
+                    <li><a href="#">Luật hình sự</a></li>
+                    <li><a href="#">Tư vấn doanh nghiệp</a></li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4 footer-column">
+
+                <h5 class="footer-title">
+                    THÔNG TIN LIÊN HỆ
+                </h5>
+
+                <ul class="footer-links footer-contact">
+
+                    <li>
+                        <i class="ti ti-map-pin"></i>
+
+                        <span>
+                            Tầng 5, Tòa nhà LexViet, 123 Đường Nguyễn Huệ,
+                            Quận 1, TP. Hồ Chí Minh
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="ti ti-phone"></i>
+                        <span>(028) 1234 5678</span>
+                    </li>
+
+                    <li>
+                        <i class="ti ti-mail"></i>
+                        <span>info@lexviet.vn</span>
+                    </li>
+
+                    <li>
+                        <i class="ti ti-world"></i>
+                        <span>www.lexviet.vn</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-6">
+                    © 2026 LexViet. Tất cả quyền được bảo lưu.
+                </div>
+
+                <div class="col-md-6 text-md-end mt-3 mt-md-0">
+
+                    <a href="#" class="text-white-50 me-3">
+                        Chính sách bảo mật
+                    </a>
+
+                    <a href="#" class="text-white-50">
+                        Điều khoản sử dụng
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- FLOATING CONTACT -->
+
+<div class="floating-contact">
+    <a
+        href="tel:0912345678"
+        class="floating-contact__item floating-contact__phone"
+        data-label="Gọi tư vấn"
+        aria-label="Gọi tư vấn"
+    >
+        <i class="ti ti-phone"></i>
+    </a>
+
+    <a
+        href="https://zalo.me/0912345678"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="floating-contact__item floating-contact__zalo"
+        data-label="Chat Zalo"
+        aria-label="Chat Zalo"
+    >
+        ZALO
+    </a>
+</div>
+
+<!-- BACK TO TOP -->
+
+<a href="#" class="back-to-top" id="backToTop">
+    <i class="ti ti-arrow-up"></i>
+</a>
+
+
+<!-- jQuery -->
+<script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+></script>
+
+<!-- Bootstrap -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+></script>
+
+<!-- OwlCarousel -->
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    /**
+     * Hero Slider
+     */
+
+    $('.hero-slider').owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 6000,
+        autoplayHoverPause: true,
+        smartSpeed: 800,
+        dots: true,
+        nav: true,
+        navText: [
+            '<i class="ti ti-chevron-left"></i>',
+            '<i class="ti ti-chevron-right"></i>'
+        ]
+    });
+
+
+    /**
+     * Back To Top
+     */
+
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function () {
+
+        if (window.scrollY > 500) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+
+    });
+
+    backToTop.addEventListener('click', function (e) {
+
+        e.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+    });
+
+    /**
+     * Sticky header + ScrollSpy + smooth scroll
+     */
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const header = document.querySelector('.site-header');
+        const headerHeight = () => header ? header.offsetHeight : 72;
+
+        // Only links that actually point to an existing section/footer participate.
+        const navLinks = Array.from(
+            document.querySelectorAll('#mainNavbar .nav-link[href^="#"]')
+        ).filter(function (link) {
+            const selector = link.getAttribute('href');
+            return selector && selector !== '#' && document.querySelector(selector);
+        });
+
+        const sections = navLinks.map(function (link) {
+            const selector = link.getAttribute('href');
+
+            return {
+                link: link,
+                section: document.querySelector(selector)
+            };
+        });
+
+        function setActive(link) {
+            navLinks.forEach(function (item) {
+                item.classList.toggle('active', item === link);
+            });
+        }
+
+        function updateScrollSpy() {
+            const currentPosition = window.scrollY + headerHeight() + 120;
+            let current = sections[0];
+
+            sections.forEach(function (item) {
+                if (item.section.offsetTop <= currentPosition) {
+                    current = item;
+                }
+            });
+
+            if (current) {
+                setActive(current.link);
+            }
+        }
+
+        function updateHeader() {
+            if (!header) return;
+
+            header.classList.toggle(
+                'sticky-active',
+                window.scrollY > 50
+            );
+        }
+
+        // Initial state
+        updateHeader();
+        updateScrollSpy();
+
+        // Update while scrolling
+        window.addEventListener('scroll', function () {
+            updateHeader();
+            updateScrollSpy();
+        }, { passive: true });
+
+        window.addEventListener('resize', updateScrollSpy);
+
+        // Smooth scroll for menu links
+        navLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                const target = document.querySelector(
+                    this.getAttribute('href')
+                );
+
+                if (!target) return;
+
+                const top = target.getBoundingClientRect().top
+                    + window.pageYOffset
+                    - headerHeight()
+                    + 1;
+
+                setActive(this);
+
+                window.scrollTo({
+                    top: top,
+                    behavior: 'smooth'
+                });
+
+                // Close Bootstrap mobile menu after selecting an item
+                const navbarCollapse = document.querySelector('#mainNavbar');
+
+                if (
+                    navbarCollapse &&
+                    navbarCollapse.classList.contains('show') &&
+                    window.innerWidth < 992
+                ) {
+                    bootstrap.Collapse
+                        .getOrCreateInstance(navbarCollapse)
+                        .hide();
+                }
+            });
+        });
+
+    });
+
+</script>
+
+<script>
+
+    const GOOGLE_SCRIPT_URL =
+        'https://script.google.com/macros/s/AKfycbwn6i6UgAlyD-zf2V8KmfPcRqHUuooGP-zPGoLLJRsGjblsupO-hX3eBRkzsID6G0dACg/exec';
+
+
+    $('#consultationForm').on('submit', function (e) {
+
+        e.preventDefault();
+
+        const form = this;
+        const $form = $(form);
+        const $button = $('#btnSubmit');
+
+
+        // ==========================
+        // GET DATA
+        // ==========================
+
+        const name = $.trim($('#name').val());
+        const phone = $.trim($('#phone').val());
+        const law = $('#law').val();
+        const content = $.trim($('#content').val());
+
+
+        // ==========================
+        // VALIDATE
+        // ==========================
+
+        if (!name) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Thiếu thông tin',
+                text: 'Vui lòng nhập họ và tên.',
+                confirmButtonText: 'Đã hiểu'
+            });
+
+            $('#name').focus();
+
+            return;
+        }
+
+
+        if (!phone) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Thiếu thông tin',
+                text: 'Vui lòng nhập số điện thoại.',
+                confirmButtonText: 'Đã hiểu'
+            });
+
+            $('#phone').focus();
+
+            return;
+        }
+
+
+        // Validate số điện thoại Việt Nam
+        const phoneRegex =
+            /^(0|\+84)(3|5|7|8|9)[0-9]{8}$/;
+
+        const normalizedPhone =
+            phone.replace(/[\s.-]/g, '');
+
+
+        if (!phoneRegex.test(normalizedPhone)) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Số điện thoại không hợp lệ',
+                text: 'Vui lòng kiểm tra lại số điện thoại.',
+                confirmButtonText: 'Đã hiểu'
+            });
+
+            $('#phone').focus();
+
+            return;
+        }
+
+
+        if (!law) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Thiếu thông tin',
+                text: 'Vui lòng chọn lĩnh vực tư vấn.',
+                confirmButtonText: 'Đã hiểu'
+            });
+
+            $('#law').focus();
+
+            return;
+        }
+
+
+        if (!content) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Thiếu thông tin',
+                text: 'Vui lòng nhập nội dung tư vấn.',
+                confirmButtonText: 'Đã hiểu'
+            });
+
+            $('#content').focus();
+
+            return;
+        }
+
+
+        // ==========================
+        // LOADING
+        // ==========================
+
+        $button
+            .prop('disabled', true)
+            .html(`
+                <span
+                    class="spinner-border spinner-border-sm me-2"
+                    role="status"
+                ></span>
+                ĐANG GỬI...
+            `);
+
+
+        // ==========================
+        // AJAX
+        // ==========================
+
+        $.ajax({
+
+            url: GOOGLE_SCRIPT_URL,
+
+            type: 'POST',
+
+            data: {
+                name: name,
+                phone: normalizedPhone,
+                law: law,
+                content: content
+            },
+
+            success: function (response) {
+
+                console.log(response);
+
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Gửi yêu cầu thành công!',
+                    text: 'Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.',
+                    confirmButtonText: 'Đóng'
+                });
+
+
+                form.reset();
+
+            },
+
+            error: function (xhr) {
+
+                console.error(xhr);
+
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Có lỗi xảy ra',
+                    text: 'Không thể gửi yêu cầu. Vui lòng thử lại sau.',
+                    confirmButtonText: 'Đóng'
+                });
+
+            },
+
+            complete: function () {
+
+                $button
+                    .prop('disabled', false)
+                    .html('GỬI YÊU CẦU TƯ VẤN');
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
